@@ -1,6 +1,7 @@
 package com.tayssir.cosmetique.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Cosmetique {
@@ -22,19 +25,61 @@ public class Cosmetique {
     @ManyToOne
     @JoinColumn(name = "classification_id_clas")
     private Classification classification;
+    
+    @OneToMany (mappedBy = "cosmetique")
+    private List<Image> images;
+    
+    private String imagePath;
 
-    public Cosmetique() {
+
+
+    public String getImagePath() {
+		return imagePath;
+	}
+
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+
+
+	public Cosmetique() {
         super();
     }
 
-    public Cosmetique(String nomCosmetique, Double prixCosmetique, Date dateCreation) {
+   
+	public List<Image> getImages() {
+		return images;
+	}
+
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
+
+
+	public Cosmetique(String nomCosmetique, Double prixCosmetique, Date dateCreation) {
         super();
         this.nomCosmetique = nomCosmetique;
         this.prixCosmetique = prixCosmetique;
         this.dateCreation = dateCreation;
     }
+	
+    
 
-    public Long getIdCosmetique() {
+
+	public Cosmetique(String nomCosmetique, Double prixCosmetique, Date dateCreation, Classification classification,
+			List<Image> images) {
+		super();
+		this.nomCosmetique = nomCosmetique;
+		this.prixCosmetique = prixCosmetique;
+		this.dateCreation = dateCreation;
+		this.classification = classification;
+		this.images = images;
+	}
+
+
+	public Long getIdCosmetique() {
         return idCosmetique;
     }
 
