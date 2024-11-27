@@ -49,12 +49,11 @@ public class CosmetiqueServiceImp implements CosmetiqueService {
 
 	@Override
 	public void deleteCosmetiqueById(Long id) {
-		Cosmetique c = getCosmetique(id);
-		try {
-			Files.delete(Paths.get(System.getProperty("user.home")+"/images/"+c.getImagePath()));
-			} catch (IOException e) {
-			e.printStackTrace();
-			} 
+		/*
+		 * Cosmetique c = getCosmetique(id); try {
+		 * Files.delete(Paths.get(System.getProperty("user.home")+"/images/"+c.
+		 * getImagePath())); } catch (IOException e) { e.printStackTrace(); }
+		 */
 		cosmetiqueRepository.deleteById(id);
 	}
 

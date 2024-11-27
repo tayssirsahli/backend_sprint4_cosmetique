@@ -29,19 +29,16 @@ public class Cosmetique {
     @OneToMany (mappedBy = "cosmetique")
     private List<Image> images;
     
-    private String imagePath;
+   // private String imagePath;
 
 
 
-    public String getImagePath() {
-		return imagePath;
-	}
-
-
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
-	}
-
+	/*
+	 * public String getImagePath() { return imagePath; }
+	 * 
+	 * 
+	 * public void setImagePath(String imagePath) { this.imagePath = imagePath; }
+	 */
 
 	public Cosmetique() {
         super();

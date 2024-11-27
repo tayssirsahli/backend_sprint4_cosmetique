@@ -61,22 +61,24 @@ public class ImageRestController {
 		return imageService.getImagesParCosm(idCosm);
 	}
 
-	@RequestMapping(value = "/uploadFS/{id}", method = RequestMethod.POST)
-	public void uploadImageFS(@RequestParam("image") MultipartFile file, @PathVariable("id") Long id)
-			throws IOException {
-		Cosmetique c = cosmetiqueService.getCosmetique(id);
-		c.setImagePath(id + ".jpg");
-
-		Files.write(Paths.get(System.getProperty("user.home") + "/images/" + c.getImagePath()), file.getBytes());
-		cosmetiqueService.saveCosmetique(c);
-
-	}
-
-	@RequestMapping(value = "/loadfromFS/{id}", method = RequestMethod.GET, produces = org.springframework.http.MediaType.IMAGE_JPEG_VALUE)
-	public byte[] getImageFS(@PathVariable("id") Long id) throws IOException {
-
-		Cosmetique c = cosmetiqueService.getCosmetique(id);
-		return Files.readAllBytes(Paths.get(System.getProperty("user.home") + "/images/" + c.getImagePath()));
-	}
+	/*
+	 * @RequestMapping(value = "/uploadFS/{id}", method = RequestMethod.POST) public
+	 * void uploadImageFS(@RequestParam("image") MultipartFile
+	 * file, @PathVariable("id") Long id) throws IOException { Cosmetique c =
+	 * cosmetiqueService.getCosmetique(id); c.setImagePath(id + ".jpg");
+	 * 
+	 * Files.write(Paths.get(System.getProperty("user.home") + "/images/" +
+	 * c.getImagePath()), file.getBytes()); cosmetiqueService.saveCosmetique(c);
+	 * 
+	 * }
+	 * 
+	 * @RequestMapping(value = "/loadfromFS/{id}", method = RequestMethod.GET,
+	 * produces = org.springframework.http.MediaType.IMAGE_JPEG_VALUE) public byte[]
+	 * getImageFS(@PathVariable("id") Long id) throws IOException {
+	 * 
+	 * Cosmetique c = cosmetiqueService.getCosmetique(id); return
+	 * Files.readAllBytes(Paths.get(System.getProperty("user.home") + "/images/" +
+	 * c.getImagePath())); }
+	 */
 
 }
